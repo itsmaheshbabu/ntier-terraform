@@ -166,30 +166,6 @@ resource "aws_instance" "webserver" {
 
 }
 
-resource "null_resource" "forprovisioning" {
-    triggers = {
-      "order" = "aws_instance.webserver"
-    }
-    connection {
-      type ="ssh"
-      user = "ubuntu"
-      private_key = file("./iampractise.pem")
-      host = aws_instance.webserver.public_ip
-    }
-    provisioner "file" {
-        source = "./scripts/installapache.sh"
-        destination = "/home/ubuntu/installapache.sh"
-    
-    }
-    provisioner "remote-exec" {
-        inline = [
-          "sh /home/ubuntu/installapache.sh"
-        ]
-    
-    }
-
-   
-}
 
 
 
