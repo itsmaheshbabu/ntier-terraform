@@ -164,6 +164,24 @@ resource "aws_instance" "webserver" {
       aws_security_group.websg
     ]
 
+    connection {
+      type ="ssh"
+      user = "ubuntu"
+      private_key = file("./iampractise.pem")
+      host = aws_instance.webserver.public_ip
+    }
+    provisioner "file" {
+        source = "./scripts/installapache.sh"
+        destination = "/home/ubuntu/installapache.sh"
+    
+    }
+    provisioner "remote-exec" {
+        inline = [
+          "sh /home/ubuntu/installapache.sh"
+        ]
+    
+    }
+
 }
 
 
