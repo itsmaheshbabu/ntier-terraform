@@ -167,7 +167,7 @@ resource "aws_instance" "webserver" {
     connection {
       type ="ssh"
       user = "ubuntu"
-      private_key = file("./iampractise.pem")
+      private_key = file("/home/asus/iampractise.pem")
       host = aws_instance.webserver.public_ip
     }
     provisioner "file" {
