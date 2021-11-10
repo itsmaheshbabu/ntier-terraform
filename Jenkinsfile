@@ -6,7 +6,7 @@ pipeline {
                 git credentialsId: 'github-credentials', url: 'https://github.com/itsmaheshbabu/ntier-terraform.git'
             }
         }
-        stage('init) {
+        stage('init') {
               steps {
                   sh 'terraform init'
     }
