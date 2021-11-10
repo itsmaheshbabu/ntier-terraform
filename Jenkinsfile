@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Gitcheckout') {
             steps {
-                git 'https://github.com/itsmaheshbabu/ntier-terraform.git'
+                git branch: 'master', url: 'https://github.com/itsmaheshbabu/ntier-terraform.git'
             }
         }
     }
