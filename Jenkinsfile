@@ -21,6 +21,11 @@ pipeline {
                 sh 'terraform apply -var-file="values.tfvars" --auto-approve'
             }
         }
+        stage('destroy) {
+              steps {
+                  sh 'terraform destroy --auto-approve'
+             }
+       }
     }
 }
 
