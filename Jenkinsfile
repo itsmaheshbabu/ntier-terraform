@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('scm') {
             steps {
-                git branch: 'master', url: 'https://github.com/itsmaheshbabu/ntier-terraform.git'
+                git credentialsId: 'github-credentials', url: 'https://github.com/itsmaheshbabu/ntier-terraform.git'
             }
         }
         stage('init') {
