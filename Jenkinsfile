@@ -16,6 +16,11 @@ pipeline {
                 sh 'terraform validate'
             }
         }
+        stage('apply') {
+            steps {
+                sh 'terraform apply -var-file="values.tfvars" --auto-approve'
+            }
+        }
     }
 }
 
